@@ -4,4 +4,5 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@nuxt/eslint', '@nuxt/fonts', '@nuxt/icon', '@nuxtjs/tailwindcss'],
   css: ['~/assets/main.css'],
+  ssr: false
 });
