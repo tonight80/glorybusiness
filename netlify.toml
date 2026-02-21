@@ -1,5 +1,5 @@
 [build]
-  command = "pnpm run generate"
+  command = "pnpm nuxt generate"
   publish = ".output/public"
 
 [build.environment]
