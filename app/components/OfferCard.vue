@@ -1,122 +1,144 @@
 <template>
-  <section class="relative py-24 px-6 md:px-12 bg-[#090909]">
+  <section id="offer" ref="sectionRef" class="relative py-24 px-6 md:px-12 bg-[#090909]">
     <div class="max-w-7xl mx-auto">
-      <div class="offer-container group">
+      <div class="offer-container shimmer-border group scroll-reveal-scale">
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start relative z-10">
 
           <div>
             <div
-              class="inline-block px-4 py-1 rounded-full bg-[#0AA5FF]/10 border border-[#0AA5FF]/20 text-[#0AA5FF] text-xs font-medium mb-6 uppercase tracking-widest">
-              Limited Offer
+              class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0AA5FF]/8 border border-[#0AA5FF]/20 mb-6"
+            >
+              <span class="w-1.5 h-1.5 bg-[#0AA5FF] rounded-full animate-pulse"></span>
+              <span class="text-[#0AA5FF] text-xs font-semibold uppercase tracking-widest">Limited Offer</span>
             </div>
+
             <h2 class="text-4xl md:text-5xl font-bold text-[#EDE8D4] mb-6 leading-tight">
-              Продающий лендинг <br>
-              <span class="text-[#0AA5FF]">за 48 часов</span>
+              Продающий лендинг<br />
+              <span class="gradient-text-static">за 48 часов</span>
             </h2>
-            <p class="text-[#EDE8D4]/60 text-lg mb-10 max-w-md font-light leading-relaxed">
+
+            <p class="text-[#EDE8D4]/50 text-lg mb-10 max-w-md font-light leading-relaxed">
               Не шаблон, а индивидуальный инструмент под вашу нишу. Сразу готов к трафику.
             </p>
 
+            <!-- Price -->
             <div class="price-block">
               <div class="flex items-baseline gap-3">
                 <h2 class="text-5xl font-black text-[#EDE8D4]">30 000 ₽</h2>
                 <span class="text-[#0AA5FF] font-mono">/ фикс</span>
               </div>
-              <p class="text-[#EDE8D4]/40 text-sm mt-2">без скрытых платежей и доплат</p>
+              <p class="text-[#EDE8D4]/35 text-sm mt-2">без скрытых платежей и доплат</p>
             </div>
 
-            <div class="flex flex-col sm:flex-row gap-4 mt-12">
-              <a href="#" class="btn-primary-glow">
+            <!-- Urgency -->
+            <div class="mt-8 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-orange-500/8 border border-orange-500/20">
+              <span class="text-orange-400 text-sm">🔥</span>
+              <span class="text-orange-400/90 text-sm font-medium">Осталось {{ slotsLeft }} мест в этом месяце</span>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 mt-10">
+              <a href="https://t.me/causeiknowu" class="btn-glow text-center">
                 Открыть полную оферту (PDF)
               </a>
-              <a href="#" class="btn-secondary-outline">
+              <a href="https://t.me/causeiknowu" class="btn-outline text-center justify-center">
                 Ссылка на оплату
               </a>
             </div>
 
-            <p class="text-[#EDE8D4]/30 text-[12px] mt-6 italic">
+            <p class="text-[#EDE8D4]/25 text-[12px] mt-6 italic">
               * Оферта и ссылка на оплату генерируются индивидуально после обсуждения в Telegram.
             </p>
           </div>
 
-          <div class="bg-white/5 p-8 md:p-10 rounded-3xl border border-white/10 backdrop-blur-xl">
+          <!-- What's included -->
+          <div class="included-card">
             <h3 class="text-[#EDE8D4] text-xl font-semibold mb-8 flex items-center gap-3">
               <span class="w-2 h-2 bg-[#0AA5FF] rounded-full animate-pulse"></span>
               Что входит в стоимость:
             </h3>
-            <ul class="space-y-6">
-              <li v-for="(item, index) in list" :key="index" class="flex items-start gap-4 group/item">
-                <div
-                  class="mt-1.5 w-5 h-5 flex-shrink-0 rounded-full border border-[#0AA5FF]/40 flex items-center justify-center group-hover/item:border-[#0AA5FF] transition-colors">
-                  <div class="w-1.5 h-1.5 bg-[#0AA5FF] rounded-full"></div>
+
+            <ul class="space-y-5">
+              <li
+                v-for="(item, index) in list"
+                :key="index"
+                class="flex items-start gap-4 group/item"
+              >
+                <div class="mt-1 w-6 h-6 flex-shrink-0 rounded-full border border-[#0AA5FF]/30 flex items-center justify-center group-hover/item:border-[#0AA5FF] group-hover/item:bg-[#0AA5FF]/10 transition-all duration-300">
+                  <svg class="w-3 h-3 text-[#0AA5FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
                 </div>
-                <span
-                  class="text-[#EDE8D4]/80 text-base leading-snug group-hover/item:text-[#EDE8D4] transition-colors">
+                <span class="text-[#EDE8D4]/75 text-[15px] leading-snug group-hover/item:text-[#EDE8D4] transition-colors duration-300">
                   {{ item }}
                 </span>
               </li>
             </ul>
+
+            <!-- Bonus badge -->
+            <div class="mt-8 p-4 rounded-2xl bg-gradient-to-r from-[#0AA5FF]/5 to-[#6C5CE7]/5 border border-[#0AA5FF]/10">
+              <div class="flex items-center gap-3">
+                <span class="text-xl">🎁</span>
+                <div>
+                  <div class="text-[#EDE8D4] text-sm font-semibold">Бонус при заказе сегодня</div>
+                  <div class="text-[#EDE8D4]/40 text-xs mt-0.5">Бесплатная настройка Telegram-бота для заявок</div>
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>
 
-        <div
-          class="absolute -top-20 -right-20 w-64 h-64 bg-[#0AA5FF]/10 blur-[100px] rounded-full pointer-events-none group-hover:bg-[#0AA5FF]/20 transition-all duration-700">
-        </div>
+        <!-- Ambient glow -->
+        <div class="absolute -top-24 -right-24 w-72 h-72 bg-[#0AA5FF]/8 blur-[100px] rounded-full pointer-events-none group-hover:bg-[#0AA5FF]/15 transition-all duration-700"></div>
+        <div class="absolute -bottom-16 -left-16 w-48 h-48 bg-[#6C5CE7]/5 blur-[80px] rounded-full pointer-events-none"></div>
       </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
+import { useScrollReveal } from '~/composables/useScrollReveal'
+
+const sectionRef = ref<HTMLElement | null>(null)
+useScrollReveal(sectionRef, { staggerDelay: 0 })
+
+const slotsLeft = ref(3)
+
 const list = [
-  "Анализ ниши и прототип за 6 часов",
-  "Агрессивный дизайн с конверсионными элементами",
-  "Чистая вёрстка, адаптив под все устройства",
-  "Подключение аналитики и метрик",
-  "Базовая SEO-оптимизация",
-  "Гарантия 14 дней на правки"
+  'Анализ ниши и прототип за 6 часов',
+  'Агрессивный дизайн с конверсионными элементами',
+  'Чистая вёрстка, адаптив под все устройства',
+  'Подключение аналитики и метрик',
+  'Базовая SEO-оптимизация',
+  'Гарантия 14 дней на правки',
 ]
 </script>
 
 <style scoped>
 .offer-container {
   @apply relative overflow-hidden p-8 md:p-16 rounded-[40px] transition-all duration-500;
-  background: linear-gradient(145deg, rgba(237, 232, 212, 0.05) 0%, rgba(9, 9, 9, 1) 100%);
-  border: 1px solid rgba(237, 232, 212, 0.1);
+  background: linear-gradient(145deg, rgba(237, 232, 212, 0.04) 0%, rgba(9, 9, 9, 1) 100%);
+  border: 1px solid rgba(237, 232, 212, 0.08);
 }
 
 .offer-container:hover {
-  border-color: rgba(10, 165, 255, 0.3);
-  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.5);
-}
-
-.btn-primary-glow {
-  @apply px-8 py-4 rounded-2xl text-[14px] font-bold uppercase tracking-wider transition-all duration-300 text-center;
-  background: #EDE8D4;
-  color: #090909;
-  box-shadow: 0 0 0 rgba(237, 232, 212, 0);
-}
-
-.btn-primary-glow:hover {
-  background: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(237, 232, 212, 0.15);
-}
-
-.btn-secondary-outline {
-  @apply px-8 py-4 rounded-2xl text-[14px] font-bold uppercase tracking-wider transition-all duration-300 border border-[#EDE8D4]/20 text-[#EDE8D4] text-center;
-  backdrop-filter: blur(10px);
-}
-
-.btn-secondary-outline:hover {
-  background: rgba(237, 232, 212, 0.05);
-  border-color: #EDE8D4;
-  transform: translateY(-2px);
+  border-color: rgba(10, 165, 255, 0.25);
+  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.5), 0 0 50px rgba(10, 165, 255, 0.05);
 }
 
 .price-block {
-  @apply inline-block p-6 rounded-3xl border border-white/5 bg-white/[0.02];
+  @apply inline-block p-6 rounded-3xl;
+  background: rgba(237, 232, 212, 0.02);
+  border: 1px solid rgba(237, 232, 212, 0.06);
+}
+
+.included-card {
+  @apply p-8 md:p-10 rounded-3xl;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
 }
 </style>
